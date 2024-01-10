@@ -1,8 +1,9 @@
-import {fetchAnyUrl, restDelete} from "../module/modulejson.js";
+import {fetchAnyUrl, crudSailboat, postObjectAsJson} from "../module/modulejson.js";
 
 const sailboatsListUrl = 'http://localhost:8080/allboats'
-const deleteSailboatUrl = 'http://localhost:8080/sailboat'
 const tableSailboats = document.getElementById("tableSailboats");
+
+const url = "http://localhost:8080/sailboat"
 
 
 function createRow(sailboat)
@@ -32,17 +33,36 @@ function createRow(sailboat)
     }
     cell.appendChild(pbDelete)
 
+    cell = row.insertCell(cellCount++);
+    const pbEdit = document.createElement("input");
+    pbEdit.type = "button";
+    pbEdit.setAttribute("value", "Edit sailboat");
+    pbEdit.className = "editbtn";
+
+    pbEdit.onclick = function () {
+        const newBoatType = window.prompt("Enter new boat type:", sailboat.boatType);
+
+        if (newBoatType !== null) {
+            sailboat.boatType = newBoatType;
+            cell = row.cells[1];
+            cell.innerHTML = newBoatType;
+
+            const putUrl = url + "/" + sailboat.id
+
+            postObjectAsJson(putUrl, sailboat, "PUT")
+        }
+    };
+
+    cell.appendChild(pbEdit);
+
 }
 
 async function deleteSailboat(sailboat)
 {
     try{
-        const urlDelete = deleteSailboatUrl + "/" + sailboat.id
-        const resp = await restDelete(urlDelete)
+        const urlDelete = url + "/" + sailboat.id
+        await postObjectAsJson(urlDelete, sailboat, 'DELETE')
 
-        //Får fejlbeskeder fra backend fra deleteMappingen, altså ResponseEnitity
-        const body = await resp.text();
-        alert(body)
     } catch (error)
     {
         alert(error.message);
