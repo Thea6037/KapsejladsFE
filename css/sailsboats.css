@@ -1,39 +1,72 @@
 body {
-    background-color: #f0f5fe;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f7ff; /* En lys blå nuance */
     margin: 0;
     padding: 0;
 }
 
 .div1 {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Hvid baggrund til hovedsektionen */
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Blød skygge */
     margin: 20px;
+    width: 50%;
 }
 
 h1 {
-    color: #4285f4;
+    color: #0066cc; /* Mørkeblå overskrift */
 }
 
-table {
+.tableSailboats {
     width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
-th, td {
+.tableSailboats th, .tableSailboats td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-th {
-    background-color: #4285f4;
-    color: white;
+.tableSailboats th {
+    background-color: #0066cc; /* Mørkeblå baggrund til overskrifter */
+    color: #fff; /* Hvid tekst */
 }
 
-#myForm
-{
+#createButton button, #submitButton, .deletebtn, .editbtn {
+    background-color: #0066cc; /* Mørkeblå baggrund til knapper */
+    color: #fff; /* Hvid tekst */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#createButton button:hover, #submitButton:hover, .deletebtn:hover, .editbtn:hover {
+    background-color: #004080; /* Mørkere blå ved hover-effekt */
+}
+
+#myForm {
     display: none;
+    background-color: #ffffff; /* Hvid baggrund til formularen */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Blød skygge */
+    margin-top: 20px;
+}
+
+#myForm label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#field2 {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
